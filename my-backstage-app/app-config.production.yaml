@@ -1,0 +1,16 @@
+app:
+  # Should be the same as backend.baseUrl when using the `app-backend` plugin
+  baseUrl: https://backstage.private.ironsrc.mobi
+
+backend:
+  baseUrl: https://backstage-backend.private.ironsrc.mobi
+  listen:
+    port: 7007
+
+auth:
+  environment: development
+  providers:
+    github:
+      development:
+        clientId: 4e689be8bfa22726b4fe
+        clientSecret: 10f2cff0752874527da705099e5a57a65b36664b
