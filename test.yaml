@@ -17,6 +17,13 @@ spec:
         - Team
         - Name
       properties:
+        name:
+          title: Name
+          type: string
+          description: Please choose your service name
+          ui:autofocus: true
+          ui:options:
+            rows: 5
         owner:
           title: Owner
           type: string
@@ -31,13 +38,7 @@ spec:
           ui:autofocus: true
           ui:options:
             rows: 5
-        name:
-          title: Name
-          type: string
-          description: Please choose your service name
-          ui:autofocus: true
-          ui:options:
-            rows: 5
+
   # here's the steps that are executed in series in the scaffolder backend
   steps:
     - id: fetch-base
