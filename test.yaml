@@ -3,32 +3,22 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: v1beta3-demo
-  title: Kafka Consumer
-  description: Template for Kafka consumer
+  title: Test Action template
+  description: scaffolder v1beta3 template demo
 spec:
-  owner: devops
+  owner: backstage/techdocs-core
   type: service
 
   # these are the steps which are rendered in the frontend with the form input
   parameters:
-    - title: Fill in required information
+    - title: Fill in some steps
+      required:
+        - name
       properties:
         name:
           title: Name
           type: string
-          description: Please choose your service name
-          ui:autofocus: true
-        owner:
-          title: Owner
-          type: string
-          description: Please choose the financial owner in IronSource Mobile - General/Supply/Demand
-          ui:autofocus: true
-          ui:options:
-            rows: 5
-        team:
-          title: Team
-          type: string
-          description: Please choose your team
+          description: Unique name of the component
           ui:autofocus: true
           ui:options:
             rows: 5
@@ -43,3 +33,35 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+
+  # here's the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./template
+        values:
+          name: ${{ parameters.name }}
+
+    - id: fetch-docs
+      name: Fetch Docs
+      action: fetch:plain
+      input:
+        targetPath: ./community
+        url: https://github.com/backstage/community/tree/main/backstage-community-sessions
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.name }}
+        repoUrl: ${{ parameters.repoUrl }}
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
