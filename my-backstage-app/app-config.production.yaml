@@ -6,11 +6,17 @@ backend:
   baseUrl: https://backstage-backend.private.ironsrc.mobi
   listen:
     port: 7007
-
+  database:
+    client: "pg"
+    connection:
+      host: "backstage-postgresql"
+      port: "5432"
+      user: "backend-user"
+      database: "backstage_plugin_catalog"
 auth:
-  environment: development
+  environment: production
   providers:
     github:
-      development:
+      production:
         clientId: 4e689be8bfa22726b4fe
         clientSecret: 10f2cff0752874527da705099e5a57a65b36664b

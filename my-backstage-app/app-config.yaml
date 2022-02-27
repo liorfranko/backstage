@@ -110,3 +110,7 @@ catalog:
       target: https://github.com/backstage/software-templates/blob/main/scaffolder-templates/docs-template/template.yaml
       rules:
         - allow: [Template]
+    - type: url
+      target: https://github.com/liorfranko/backstage/blob/master/test.yaml
+      rules:
+        - allow: [Template]

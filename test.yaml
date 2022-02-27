@@ -3,37 +3,41 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: v1beta3-demo
-  title: Test Action template
-  description: scaffolder v1beta3 template demo
+  title: Kafka Consumer
+  description: Template for Kafka consumer
 spec:
-  owner: backstage/techdocs-core
+  owner: devops
   type: service
 
   # these are the steps which are rendered in the frontend with the form input
   parameters:
-    - title: Fill in some steps
+    - title: Fill in required information
       required:
-        - name
+        - Owner
+        - Team
+        - Name
       properties:
-        name:
-          title: Name
+        owner:
+          title: Owner
           type: string
-          description: Unique name of the component
+          description: Please choose the financial owner in IronSource Mobile - General/Supply/Demand
           ui:autofocus: true
           ui:options:
             rows: 5
-    - title: Choose a location
-      required:
-        - repoUrl
-      properties:
-        repoUrl:
-          title: Repository Location
+        team:
+          title: Team
           type: string
-          ui:field: RepoUrlPicker
+          description: Please choose your team
+          ui:autofocus: true
           ui:options:
-            allowedHosts:
-              - github.com
-
+            rows: 5
+        name:
+          title: Name
+          type: string
+          description: Please choose your service name
+          ui:autofocus: true
+          ui:options:
+            rows: 5
   # here's the steps that are executed in series in the scaffolder backend
   steps:
     - id: fetch-base
