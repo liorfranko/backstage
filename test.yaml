@@ -12,10 +12,6 @@ spec:
   # these are the steps which are rendered in the frontend with the form input
   parameters:
     - title: Fill in required information
-      required:
-        - Name
-        - Owner
-        - Team
       properties:
         name:
           title: Name
