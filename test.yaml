@@ -13,17 +13,15 @@ spec:
   parameters:
     - title: Fill in required information
       required:
+        - Name
         - Owner
         - Team
-        - Name
       properties:
         name:
           title: Name
           type: string
           description: Please choose your service name
           ui:autofocus: true
-          ui:options:
-            rows: 5
         owner:
           title: Owner
           type: string
