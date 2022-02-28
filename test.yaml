@@ -43,3 +43,11 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./template
+        values:
+          name: ${{ parameters.name }}
