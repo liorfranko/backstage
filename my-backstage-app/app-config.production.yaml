@@ -25,3 +25,15 @@ integrations:
     - host: github.com
       apps:
         - $include: github-app.yaml
+
+catalog:
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
+  rules:
+    - allow: [Component, System, API, Group, User, Resource, Location]
+  locations:
+    - type: url
+      target: https://github.com/ironsource-mobile/service-registry/blob/main/kafka-consumer-template.yaml
+      rules:
+        - allow: [Template]
