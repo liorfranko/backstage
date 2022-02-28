@@ -20,3 +20,8 @@ auth:
       production:
         clientId: 4e689be8bfa22726b4fe
         clientSecret: 10f2cff0752874527da705099e5a57a65b36664b
+integrations:
+  github:
+    - host: github.com
+      apps:
+        - $include: github-app.yaml
